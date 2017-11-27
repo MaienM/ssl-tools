@@ -90,6 +90,7 @@ if [ $force ]; then
     rmifexists "$outdir/serial.txt"
     rmifexists "$outdir/rootCA.key"
     rmifexists "$outdir/rootCA.pem"
+    rmifexists "$outdir/rootCA.crt"
 fi
 
 # Create bookkeeping files
@@ -137,6 +138,7 @@ else
         -config "$outdir/config.ini" \
         -key "$outdir/rootCA.key" \
         -out "$outdir/rootCA.pem"
+    cp "$outdir/ssl.pem" "$outdir/ssl.crt"
 fi
 
 # Show info about the (generated) certificate

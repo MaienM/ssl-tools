@@ -110,6 +110,7 @@ if [ $force ]; then
     rmifexists "$outdir/request.csr"
     rmifexists "$outdir/ssl.key"
     rmifexists "$outdir/ssl.pem"
+    rmifexists "$outdir/ssl.crt"
 fi
 
 # Combine config files
@@ -194,6 +195,7 @@ echo "> Signing certificate"
     -out "$outdir/ssl.pem" \
     -infiles "$outdir/request.csr"
 )
+cp "$outdir/ssl.pem" "$outdir/ssl.crt"
 
 echo "> Info"
 openssl x509 \
